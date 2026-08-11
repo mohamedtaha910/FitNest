@@ -69,7 +69,12 @@ class _BodyPartsPageState extends State<BodyPartsPage> {
                             ),
                           );
                         },
-                        child: CustomRow(bodyPart: bodyPart, icon: icon),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            bottom: index == bodyParts.length - 1 ? 100 : 0,
+                          ),
+                          child: CustomRow(bodyPart: bodyPart, icon: icon),
+                        ),
                       );
                     },
                   );

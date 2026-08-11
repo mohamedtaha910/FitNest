@@ -43,9 +43,7 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         clipBehavior: Clip.none,
         children: [
-          currentBody == 'BodyParts'
-              ? Expanded(child: BodyPartsPage())
-              : Expanded(child: EquipmentsPage()),
+          currentBody == 'BodyParts' ? BodyPartsPage() : EquipmentsPage(),
           Positioned(
             bottom: 0,
             right: 0,
@@ -67,95 +65,135 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
-            bottom: 24,
+            bottom: 32,
             right: 0,
             left: 0,
             child: // buttons
             Center(
-              child: Container(
-                padding: EdgeInsets.all(1.2),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: Colors.grey.shade300.withAlpha(200),
-                    width: 0.4,
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          currentBody = 'BodyParts';
-                        });
-                      },
-                      child: Container(
-                        width: (MediaQuery.of(context).size.width * 0.5) - 16,
-                        padding: EdgeInsets.symmetric(
-                          // horizontal: MediaQuery.of(context).size.width * 0.12,
-                          vertical: 12,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: currentBody == 'BodyParts'
-                              ? kSecondaryColor
-                              : Colors.grey.shade300,
-                        ),
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          'BodyParts',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: currentBody == 'BodyParts'
-                                ? Colors.white
-                                : Colors.black,
-                            fontSize: 15,
-                          ),
-                        ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                  child: Container(
+                    padding: EdgeInsets.all(1.2),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300.withAlpha(10),
+                      borderRadius: BorderRadius.circular(100),
+                      border: Border.all(
+                        color: Colors.grey.shade300.withAlpha(200),
+                        width: 0.8,
                       ),
                     ),
-
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          currentBody = 'eq';
-                        });
-                      },
-                      child: Container(
-                        width: (MediaQuery.of(context).size.width * 0.5) - 16,
-                        padding: EdgeInsets.symmetric(
-                          // horizontal: MediaQuery.of(context).size.width * 0.12,
-                          vertical: 12,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: currentBody == 'eq'
-                              ? kSecondaryColor
-                              : Colors.grey.shade300,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            // Icon(Icons.safety_check
-                            // ),
-                            Text(
-                              'Equipments',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: currentBody == 'eq'
-                                    ? Colors.white
-                                    : Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              currentBody = 'BodyParts';
+                            });
+                          },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                              child: Container(
+                                width:
+                                    (MediaQuery.of(context).size.width * 0.5) -
+                                    16,
+                                padding: EdgeInsets.symmetric(
+                                  // horizontal: MediaQuery.of(context).size.width * 0.12,
+                                  vertical: 12,
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: currentBody == 'BodyParts'
+                                      ? kSecondaryColor.withAlpha(120)
+                                      : Colors.grey.shade300.withAlpha(10),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.accessibility_new,
+                                      color: currentBody == 'BodyParts'
+                                          ? Colors.white
+                                          : Colors.black54,
+                                    ),
+                                    SizedBox(width: 6),
+                                    Text(
+                                      textAlign: TextAlign.center,
+                                      'BodyParts',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: currentBody == 'BodyParts'
+                                            ? Colors.white
+                                            : Colors.black54,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              currentBody = 'eq';
+                            });
+                          },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 0, sigmaY: 20),
+                              child: Container(
+                                width:
+                                    (MediaQuery.of(context).size.width * 0.5) -
+                                    16,
+                                padding: EdgeInsets.symmetric(
+                                  // horizontal: MediaQuery.of(context).size.width * 0.12,
+                                  vertical: 12,
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: currentBody == 'eq'
+                                      ? kSecondaryColor.withAlpha(120)
+                                      : Colors.grey.shade300.withAlpha(10),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.bolt_rounded,
+                                      color: currentBody == 'eq'
+                                          ? Colors.white
+                                          : Colors.black54,
+                                    ),
+                                    SizedBox(width: 6),
+                                    Text(
+                                      'Equipments',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: currentBody == 'eq'
+                                            ? Colors.white
+                                            : Colors.black54,
+
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),

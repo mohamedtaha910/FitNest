@@ -47,8 +47,7 @@ class _EquipmentsPageState extends State<EquipmentsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: 
-       FutureBuilder(
+      body: FutureBuilder(
         future: ExcerciseServices().getEquipments(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
@@ -82,11 +81,11 @@ class _EquipmentsPageState extends State<EquipmentsPage> {
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       final String equipment = equipments[index];
-      
+
                       final String icon =
                           equipmentsIcons[equipment] ??
                           'aseets/icons/equipments/dumbell.png';
-      
+
                       return GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(
@@ -99,7 +98,12 @@ class _EquipmentsPageState extends State<EquipmentsPage> {
                             ),
                           );
                         },
-                        child: CustomRow(bodyPart: equipment, icon: icon),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            bottom: index == (equipments.length - 1) ? 100 : 0,
+                          ),
+                          child: CustomRow(bodyPart: equipment, icon: icon),
+                        ),
                       );
                     },
                   );
