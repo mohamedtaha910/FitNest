@@ -72,6 +72,7 @@ class _BodyPartsPageState extends State<BodyPartsPage> {
                         child: Padding(
                           padding: EdgeInsets.only(
                             bottom: index == bodyParts.length - 1 ? 100 : 0,
+                            top: index == 0 ? 20 : 0,
                           ),
                           child: CustomRow(bodyPart: bodyPart, icon: icon),
                         ),
@@ -79,7 +80,10 @@ class _BodyPartsPageState extends State<BodyPartsPage> {
                     },
                   );
           } else {
-            return ShimmerList();
+            return Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: ShimmerList(),
+            );
           }
         },
       ),

@@ -24,13 +24,13 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(150),
+        preferredSize: const Size.fromHeight(125),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(0),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 40, sigmaY: 10),
             child: AppBar(
-              toolbarHeight: 140,
+              toolbarHeight: 125,
               backgroundColor: Colors.transparent,
               elevation: 0,
               surfaceTintColor: Colors.transparent,
@@ -44,8 +44,32 @@ class _HomePageState extends State<HomePage> {
         clipBehavior: Clip.none,
         children: [
           currentBody == 'BodyParts' ? BodyPartsPage() : EquipmentsPage(),
+
+          // bottom shadow
           Positioned(
             bottom: 0,
+            right: 0,
+            left: 0,
+            child: Container(
+              height: 40,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.white,
+                    Colors.white.withAlpha(200),
+                    Colors.white.withAlpha(140),
+                    Colors.white.withAlpha(40),
+                    // Colors.red,
+                  ],
+                  begin: AlignmentGeometry.bottomCenter,
+                  end: AlignmentGeometry.topCenter,
+                ),
+              ),
+            ),
+          ),
+          // top shadow
+          Positioned(
+            top: 142,
             right: 0,
             left: 0,
             child: Container(
@@ -54,12 +78,13 @@ class _HomePageState extends State<HomePage> {
                 gradient: LinearGradient(
                   colors: [
                     Colors.white,
-                    Colors.white.withAlpha(200),
-                    Colors.white.withAlpha(140),
-                    Colors.white.withAlpha(40),
+                    Colors.white.withAlpha(180),
+                    Colors.white.withAlpha(120),
+                    Colors.white.withAlpha(10),
+                    // Colors.red,
                   ],
-                  begin: AlignmentGeometry.bottomCenter,
-                  end: AlignmentGeometry.topCenter,
+                  begin: AlignmentGeometry.topCenter,
+                  end: AlignmentGeometry.bottomCenter,
                 ),
               ),
             ),
@@ -108,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
                                   color: currentBody == 'BodyParts'
-                                      ? kSecondaryColor.withAlpha(120)
+                                      ? kSecondaryColor.withAlpha(150)
                                       : Colors.grey.shade300.withAlpha(10),
                                 ),
                                 child: Row(
@@ -160,7 +185,7 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
                                   color: currentBody == 'eq'
-                                      ? kSecondaryColor.withAlpha(120)
+                                      ? kSecondaryColor.withAlpha(150)
                                       : Colors.grey.shade300.withAlpha(10),
                                 ),
                                 child: Row(

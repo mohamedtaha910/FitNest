@@ -101,6 +101,7 @@ class _EquipmentsPageState extends State<EquipmentsPage> {
                         child: Padding(
                           padding: EdgeInsets.only(
                             bottom: index == (equipments.length - 1) ? 100 : 0,
+                            top: index == 0 ? 20 : 0,
                           ),
                           child: CustomRow(bodyPart: equipment, icon: icon),
                         ),
@@ -108,7 +109,10 @@ class _EquipmentsPageState extends State<EquipmentsPage> {
                     },
                   );
           } else {
-            return ShimmerList();
+            return Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: ShimmerList(),
+            );
           }
         },
       ),

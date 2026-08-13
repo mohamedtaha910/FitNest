@@ -28,7 +28,11 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                 SliverAppBar(
                   leading: IconButton(
                     onPressed: Navigator.of(context).pop,
-                    icon: Icon(Icons.chevron_left_rounded , size: 34, color: Colors.black54,),
+                    icon: Icon(
+                      Icons.chevron_left_rounded,
+                      size: 34,
+                      color: Colors.black54,
+                    ),
                   ),
                   expandedHeight: 350,
                   pinned: true,
@@ -69,7 +73,7 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                     ),
                   ),
                 ),
-      
+
                 /// باقي المحتوى
                 SliverToBoxAdapter(
                   child: Padding(
@@ -85,11 +89,14 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-      
+
                         const SizedBox(height: 32),
                         Center(
                           child: Container(
-                            padding: EdgeInsets.symmetric(horizontal:  2 , vertical: 2),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 2,
+                              vertical: 2,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.grey.shade300,
                               borderRadius: BorderRadius.circular(12),
@@ -115,7 +122,9 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                                           vertical: 8,
                                         ),
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(12),
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
                                           color: currentBadge == 'targetMuscles'
                                               ? kSecondaryColor
                                               : Colors.grey.shade300,
@@ -124,7 +133,8 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                                           'Target Muscles',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: currentBadge == 'targetMuscles'
+                                            color:
+                                                currentBadge == 'targetMuscles'
                                                 ? Colors.white
                                                 : Colors.black,
                                             fontSize: 14,
@@ -132,7 +142,7 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                                         ),
                                       ),
                                     ),
-                                    
+
                                     GestureDetector(
                                       onTap: () {
                                         setState(() {
@@ -145,7 +155,9 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                                           vertical: 8,
                                         ),
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(12),
+                                          borderRadius: BorderRadius.circular(
+                                            12,
+                                          ),
                                           color: currentBadge == 'eq'
                                               ? kSecondaryColor
                                               : Colors.grey.shade300,
@@ -162,7 +174,7 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                                         ),
                                       ),
                                     ),
-                                    
+
                                     GestureDetector(
                                       onTap: () {
                                         setState(() {
@@ -175,8 +187,11 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                                           vertical: 8,
                                         ),
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(14),
-                                          color: currentBadge == 'secondaryMuscles'
+                                          borderRadius: BorderRadius.circular(
+                                            14,
+                                          ),
+                                          color:
+                                              currentBadge == 'secondaryMuscles'
                                               ? kSecondaryColor
                                               : Colors.grey.shade300,
                                         ),
@@ -184,7 +199,8 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                                           'Secondary Muscles',
                                           style: TextStyle(
                                             color:
-                                                currentBadge == 'secondaryMuscles'
+                                                currentBadge ==
+                                                    'secondaryMuscles'
                                                 ? Colors.white
                                                 : Colors.black,
                                             fontWeight: FontWeight.bold,
@@ -199,9 +215,9 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                             ),
                           ),
                         ),
-      
+
                         SizedBox(height: 26),
-      
+
                         currentBadge == 'targetMuscles'
                             ? Wrap(
                                 spacing: 10,
@@ -243,9 +259,9 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                                   ),
                                 ],
                               ),
-      
+
                         const SizedBox(height: 42),
-      
+
                         /// Instructions Title
                         const Text(
                           "Instructions",
@@ -254,9 +270,9 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-      
+
                         const SizedBox(height: 15),
-      
+
                         /// Steps
                         ...List.generate(
                           widget.exercise.instructions.length,
@@ -265,7 +281,7 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                             widget.exercise.instructions[index],
                           ),
                         ),
-      
+
                         const SizedBox(height: 100),
                       ],
                     ),
@@ -273,7 +289,7 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                 ),
               ],
             ),
-      
+
             // gradient
             Positioned(
               bottom: 0,
@@ -290,7 +306,7 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
                 ),
               ),
             ),
-      
+
             /// زرار Start ثابت تحت
             Positioned(
               bottom: 15,
@@ -366,7 +382,7 @@ class _ExerciseDetailsPageState extends State<ExerciseDetailsPage> {
           const SizedBox(width: 15),
           Expanded(
             child: Text(
-              text.replaceAll("Step:", ""),
+              text.replaceAll("Step:", "").substring(2),
               style: const TextStyle(fontSize: 14),
             ),
           ),
