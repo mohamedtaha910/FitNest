@@ -26,7 +26,7 @@ class ExercisesPage extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(0),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+            filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
             child: AppBar(
               backgroundColor: Colors.white,
               surfaceTintColor: Colors.transparent,

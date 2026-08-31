@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:wellness_app/components/excercise_card.dart';
 import 'package:wellness_app/components/too_many_requests_page.dart';
@@ -19,42 +21,60 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        surfaceTintColor: Colors.transparent,
-        foregroundColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
-        // scrolledUnderElevation: 0,
-        bottom: PreferredSize(preferredSize: Size(double.infinity, 1.2), child: Container(
-          height: 1.2,
-          color: Colors.grey.shade300.withAlpha(200),
-        )),
-        title: Row(
-          children: [
-             GestureDetector(
-              onTap: (){
-                Navigator.pop(context);
-              },
-              child: const Icon(Icons.chevron_left_rounded, size: 32, color: Colors.black)),
-              SizedBox(width: 12,),
-            
-            Expanded(
-              child: TextField(
-                onChanged: (value) => setState(() => searchQuery = value),
-                autofocus: true,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "Search Exercises",
-                  hintStyle: TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, kToolbarHeight),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
+            child: AppBar(
+              automaticallyImplyLeading: false,
+              surfaceTintColor: Colors.transparent,
+              foregroundColor: Colors.transparent,
+              backgroundColor: Colors.transparent,
+              // scrolledUnderElevation: 0,
+              bottom: PreferredSize(
+                preferredSize: Size(double.infinity, 1.2),
+                child: Container(
+                  height: 1.2,
+                  color: Colors.grey.shade300.withAlpha(200),
                 ),
               ),
+              title: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.chevron_left_rounded,
+                      size: 32,
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(width: 12),
+
+                  Expanded(
+                    child: TextField(
+                      onChanged: (value) => setState(() => searchQuery = value),
+                      autofocus: true,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Search Exercises",
+                        hintStyle: TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
       body: searchQuery.isEmpty
@@ -79,25 +99,40 @@ class _SearchPageState extends State<SearchPage> {
                   List<ExerciseModel> exercises = snapshot.data!;
 
                   return exercises.isEmpty
-                      ? snapshot.error.hashCode == 429 ? TooManyRequestsPage () : TooManyRequestsPage( title: 'Too Many Requests , Try Later')
-                      : ListView.builder(
+                      ? snapshot.error.hashCode == 429
+                            ? TooManyRequestsPage()
+                            : TooManyRequestsPage(
+                                title: 'Too Many Requests , Try Later',
+                              )
+                      : SingleChildScrollView(
                           physics: BouncingScrollPhysics(),
-                          padding: const EdgeInsets.all(16),
-                          itemCount: exercises.length,
-                          itemBuilder: (context, index) {
-                            final exercise = exercises[index];
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        ExerciseDetailsPage(exercise: exercise),
-                                  ),
-                                );
-                              },
-                              child: ExerciseCard(exercise: exercise),
-                            );
-                          },
+                          child: Column(
+                            children: [
+                              SizedBox(height: 85),
+                              ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                padding: const EdgeInsets.all(16),
+                                itemCount: exercises.length,
+                                itemBuilder: (context, index) {
+                                  final exercise = exercises[index];
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ExerciseDetailsPage(
+                                                exercise: exercise,
+                                              ),
+                                        ),
+                                      );
+                                    },
+                                    child: ExerciseCard(exercise: exercise),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
                         );
                 } else {
                   return ShimmerList();

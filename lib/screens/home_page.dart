@@ -1,11 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+// import 'package:flutter_svg/svg.dart';
 import 'package:wellness_app/components/custom_app_bar.dart';
 import 'package:wellness_app/constant.dart';
 import 'package:wellness_app/screens/body_parts_page.dart';
-import 'package:wellness_app/screens/discover_page.dart';
+// import 'package:wellness_app/screens/discover_page.dart';
 import 'package:wellness_app/screens/equipments_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,18 +24,19 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(125),
+        preferredSize: const Size.fromHeight(133.8),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(0),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 40, sigmaY: 10),
-            child: AppBar(
-              toolbarHeight: 125,
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              surfaceTintColor: Colors.transparent,
-              title: CustomAppBar(),
-            ),
+            filter: ImageFilter.blur(sigmaX: 25, sigmaY: 16),
+            child: SafeArea(child: CustomAppBar()),
+            // child: AppBar(
+            //   toolbarHeight: 125,
+            //   backgroundColor: Colors.transparent,
+            //   elevation: 0,
+            //   surfaceTintColor: Colors.transparent,
+            //   title: CustomAppBar(),
+            // ),
           ),
         ),
       ),
@@ -73,12 +74,13 @@ class _HomePageState extends State<HomePage> {
             right: 0,
             left: 0,
             child: Container(
-              height: 60,
+              height: 70,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
                     Colors.white,
-                    Colors.white.withAlpha(180),
+                    Colors.white.withAlpha(250),
+                    Colors.white.withAlpha(190),
                     Colors.white.withAlpha(120),
                     Colors.white.withAlpha(10),
                     // Colors.red,
@@ -89,12 +91,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          // buttons
           Positioned(
             bottom: 32,
             right: 0,
             left: 0,
-            child: // buttons
-            Center(
+            child: Center(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: BackdropFilter(
@@ -102,11 +104,11 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     padding: EdgeInsets.all(1.2),
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade300.withAlpha(10),
+                      color: Colors.grey.shade200.withAlpha(10),
                       borderRadius: BorderRadius.circular(100),
                       border: Border.all(
                         color: Colors.grey.shade300.withAlpha(200),
-                        width: 0.8,
+                        width: 0.6,
                       ),
                     ),
                     child: Row(

@@ -13,8 +13,8 @@ class ShimmerList extends StatelessWidget {
           baseColor: Colors.grey.shade200,
           highlightColor: Colors.grey.shade300,
           child: Container(
-            height: 115,
-            margin: const EdgeInsets.all(8),
+            height: 105,
+            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
               color: Colors.grey.shade200,
               borderRadius: BorderRadius.circular(14),
