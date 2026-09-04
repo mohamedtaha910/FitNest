@@ -1,12 +1,10 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/svg.dart';
 import 'package:wellness_app/components/custom_app_bar.dart';
 import 'package:wellness_app/constant.dart';
 import 'package:wellness_app/screens/body_parts_page.dart';
-// import 'package:wellness_app/screens/discover_page.dart';
 import 'package:wellness_app/screens/equipments_page.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -30,13 +28,6 @@ class _HomePageState extends State<HomePage> {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 25, sigmaY: 16),
             child: SafeArea(child: CustomAppBar()),
-            // child: AppBar(
-            //   toolbarHeight: 125,
-            //   backgroundColor: Colors.transparent,
-            //   elevation: 0,
-            //   surfaceTintColor: Colors.transparent,
-            //   title: CustomAppBar(),
-            // ),
           ),
         ),
       ),
@@ -194,12 +185,13 @@ class _HomePageState extends State<HomePage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
-                                      Icons.bolt_rounded,
+                                      // Icons.bolt_rounded,
+                                      Iconsax.weight_1,
                                       color: currentBody == 'eq'
                                           ? Colors.white
                                           : Colors.black54,
                                     ),
-                                    SizedBox(width: 6),
+                                    SizedBox(width: 7),
                                     Text(
                                       'Equipments',
                                       textAlign: TextAlign.center,

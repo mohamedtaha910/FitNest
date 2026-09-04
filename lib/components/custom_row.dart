@@ -21,14 +21,18 @@ class CustomRow extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(14),
+            padding: const EdgeInsets.all(13),
 
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.grey.shade300,
               // borderRadius: BorderRadius.circular(42),
+              border: Border.all(
+                color: Colors.grey.shade400.withAlpha(25),
+                width: 0.8,
+              ),
             ),
-            child: Image.asset(icon, height: 52),
+            child: Image.asset(icon, height: 50),
           ),
           const SizedBox(width: 14),
           SizedBox(
